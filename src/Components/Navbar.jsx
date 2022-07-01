@@ -4,8 +4,8 @@ import styled from 'styled-components';
 const Container=styled.div`
 display: flex;
 justify-content: space-between;
-background-color: #282828;
-color: white;
+background-color:${({theme})=>theme.bg};
+color: ${({theme})=>theme.text};
 padding: 10px;
 height: 40px;
 position: sticky;
@@ -34,7 +34,7 @@ flex: 2;
 const Searchbox=styled.div`
 display: flex;
 align-items: center;
-border: 2px solid #303030;
+border: 2px solid ${({theme})=>theme.soft};
 width: 100%;
 height: 40px;
 `;
@@ -42,16 +42,17 @@ const SearchInput=styled.input`
 background:transparent;
 border: none;
 outline: none;
-color:white;
+color:${({theme})=>theme.text};
 width: 90%;
 height: 100%;
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  color:white;
+  color: ${({theme})=>theme.text};
   opacity: 1; /* Firefox */
 }
 `;
 const SerachIconbox=styled.div`
-background-color:#313131;
+/* background-color:#313131; */
+background-color: ${({theme})=>theme.bgLighter};
 width:10%;
 display: flex;
 justify-content: center;

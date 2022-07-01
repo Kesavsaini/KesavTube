@@ -1,10 +1,10 @@
-import { AccountCircleOutlined, EmojiEventsOutlined, ExploreOutlined, FlagOutlined, HelpCenterOutlined, HelpCenterRounded, HelpOutlineOutlined, HistoryOutlined, Home, LibraryAddCheckOutlined, LibraryAddOutlined, LibraryMusicOutlined, LiveTvOutlined, LocalMoviesOutlined, MovieCreationOutlined, MusicNoteOutlined, MusicVideoOutlined, NewspaperOutlined, ReportOutlined, Settings, SettingsBrightnessOutlined, SportsBarOutlined, SportsEsportsOutlined, SubscriptionsOutlined } from '@mui/icons-material';
+import { AccountCircleOutlined, EmojiEventsOutlined, ExploreOutlined, FlagOutlined, HelpOutlineOutlined, HistoryOutlined, Home,  LibraryAddOutlined, LibraryMusicOutlined, LiveTvOutlined, MovieCreationOutlined,NewspaperOutlined,Settings, SettingsBrightnessOutlined,  SportsEsportsOutlined, SubscriptionsOutlined } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
 const Container=styled.div`
-background-color: #282828;
+background-color:${({theme})=>theme.bg};
 height: calc(100vh - 60px);
-color: white;
+color: ${({theme})=>theme.text};
 padding: 0px 10px;
 width: 12vw;
 position: sticky;
@@ -43,7 +43,7 @@ margin-bottom: 20px;
 `;
 const Hr=styled.hr`
 margin: 15px 0px;
-border:0.5px solid #373737;
+border:0.5px solid ${({theme})=>theme.soft};
 `;
 const SignInBox=styled.div`
 width: 100%;
@@ -60,7 +60,7 @@ padding: 0px 10px;
 cursor: pointer;
 margin: 12px 10px;
 `;
-const Menubar = () => {
+const Menubar = ({isDark,setDark}) => {
   return (
     <>
     <Container>
@@ -132,7 +132,7 @@ const Menubar = () => {
         <HelpOutlineOutlined/>
          Help
       </IconBox>
-      <IconBox>
+      <IconBox onClick={()=>setDark(!isDark)}>
         <SettingsBrightnessOutlined/>
          Ligh Mode
       </IconBox>

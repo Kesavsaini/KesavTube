@@ -1,88 +1,28 @@
 import './App.css';
 import Home from './Page/Home';
 import Navbar from './Components/Navbar';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import Menubar from './Components/Menubar';
+import { darkTheme, LightTheme } from './utils/Theme';
+import { useState } from 'react';
 const Container=styled.div``;
 const Wrapper=styled.div`
 display: flex;
+
 `;
 function App() {
+  const [isDark,setDark]=useState(true);
   return (
    <>
+   <ThemeProvider theme={isDark?darkTheme:LightTheme}>
     <Container>
       <Navbar/>
       <Wrapper>
-        <Menubar/>
-        <div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div><div>Page</div>
-        <div>Page</div>
-
-        <div>Page</div><div>Page</div><div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div><div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div><div>Page</div>
-        <div>Page</div>
-
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        <div>Page</div>
-        </div>
+        <Menubar isDark={isDark} setDark={setDark}/>
+        <Home/>
       </Wrapper>
     </Container>
+    </ThemeProvider>
    </>
   );
 }
