@@ -32,9 +32,15 @@ overflow-x: hidden;
 const IconBox=styled.div`
 display: flex;
 align-items: center;
-margin: 8px 5px;
+padding: 5px;
+margin: 8px 0px;
 gap: 10px;
+width: 100%;
 cursor: pointer;
+&:hover{
+  background-color: ${({theme})=>theme.soft};
+}
+border-radius: 5px;
 `;
 const IconsTitle=styled.div`
 color: gray;

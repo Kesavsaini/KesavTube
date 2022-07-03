@@ -6,6 +6,7 @@ import Menubar from './Components/Menubar';
 import { darkTheme, LightTheme } from './utils/Theme';
 import { useState } from 'react';
 import Video from './Page/Video';
+import AuthPage from './Page/AuthPage';
 import {
   BrowserRouter,
   Routes,
@@ -36,7 +37,9 @@ function App() {
         <BrowserRouter>
     <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/signin" element={<AuthPage />} />
         <Route path="/video/:id" element={<Video />} />
+        Route
     </Routes>
   </BrowserRouter>
   </Pages>
