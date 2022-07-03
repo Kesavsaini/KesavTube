@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Container=styled.div`
 display: flex;
 justify-content: space-between;
-background-color:${({theme})=>theme.bg};
+background-color:${({theme})=>theme.bgLighter};
 color: ${({theme})=>theme.text};
 padding: 10px;
 height: 40px;
@@ -39,7 +39,7 @@ width: 100%;
 height: 40px;
 `;
 const SearchInput=styled.input`
-background:transparent;
+background-color:${({theme})=>theme.bg};
 border: none;
 outline: none;
 color:${({theme})=>theme.text};

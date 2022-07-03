@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {Link } from "react-router-dom"
 const Container=styled.div`
 width: 360px;
 margin-bottom: 45px;
@@ -44,6 +45,7 @@ color: ${({theme})=>theme.textSoft};
 const Card = () => {
   return (
    <>
+   <Link to="/video/123" style={{textDecoration:"none"}}>
    <Container>
       <Image src='https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/232616182/original/0f65e9367af2fa2433533f5e6fa5a301f98fce41/design-eye-catchy-clickbait-youtube-thumbnails-in-2-hours.jpg'/>
       <Details>
@@ -57,6 +59,7 @@ const Card = () => {
         </Textwrapper>
       </Details>
    </Container>
+   </Link>
    </>    
   )
 }

@@ -2,7 +2,7 @@ import { AccountCircleOutlined, EmojiEventsOutlined, ExploreOutlined, FlagOutlin
 import React from 'react'
 import styled from 'styled-components';
 const Container=styled.div`
-background-color:${({theme})=>theme.bg};
+background-color:${({theme})=>theme.bgLighter};
 height: calc(100vh - 60px);
 color: ${({theme})=>theme.text};
 padding: 0px 10px;
