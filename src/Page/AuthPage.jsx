@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import Signin from '../Components/Signin';
+import Signup from '../Components/Signup';
 const Container=styled.div`
 width:100%;
 height: 100%;
@@ -69,18 +71,9 @@ const AuthPage = () => {
         <Wrapper>
          <Title>Sign In</Title>
          <Desc>Continue to KesavTube</Desc>
-         <Input placeholder='Username'/>
-         <Input placeholder='Password'/>
-         <Buttonwrapper>
-         <Button>Sign In</Button>
-         </Buttonwrapper>
+          <Signin/>
          <Title>Or</Title>
-         <Input placeholder='Username'/>
-         <Input placeholder='email'/>
-         <Input placeholder='Password'/>
-         <Buttonwrapper>
-         <Button>Sign Up</Button>
-         </Buttonwrapper>
+         <Signup/>
         </Wrapper>
        </AuthCard>
      </Container>

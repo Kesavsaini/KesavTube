@@ -1,6 +1,7 @@
 import { AccountCircleOutlined, EmojiEventsOutlined, ExploreOutlined, FlagOutlined, HelpOutlineOutlined, HistoryOutlined, Home,  LibraryAddOutlined, LibraryMusicOutlined, LiveTvOutlined, MovieCreationOutlined,NewspaperOutlined,Settings, SettingsBrightnessOutlined,  SportsEsportsOutlined, SubscriptionsOutlined } from '@mui/icons-material';
 import React from 'react'
 import styled from 'styled-components';
+import {Link } from "react-router-dom"
 const Container=styled.div`
 background-color:${({theme})=>theme.bgLighter};
 height: calc(100vh - 60px);
@@ -36,6 +37,7 @@ padding: 5px;
 margin: 8px 0px;
 gap: 10px;
 width: 100%;
+color: ${({theme})=>theme.text};
 cursor: pointer;
 &:hover{
   background-color: ${({theme})=>theme.soft};
@@ -74,14 +76,18 @@ const Menubar = ({isDark,setDark}) => {
         <Home/>
         Home
       </IconBox>
+      <Link to="/trending" style={{textDecoration:"none"}}>
       <IconBox>
         <ExploreOutlined/>
         Explore
       </IconBox>
+      </Link>
+      <Link to="/subscription" style={{textDecoration:"none"}}>
       <IconBox>
         <SubscriptionsOutlined/>
         Subscriptions
       </IconBox>
+      </Link>
       <Hr/>
       <IconBox>
         <LibraryAddOutlined/>

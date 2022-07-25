@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components';
-import {Link } from "react-router-dom"
+import {Link } from "react-router-dom";
+import { useEffect,useState  } from 'react';
+import axios from 'axios';
+import {format} from "timeago.js"
 const Container=styled.div`
 width: 360px;
 margin-bottom: 45px;
@@ -53,19 +56,32 @@ const Otherinfo=styled.div`
 color: ${({theme})=>theme.textSoft};
 font-size: ${props=>props.type==="hz" && "12px"};
 `;
-const Card = ({type}) => {
+const Card = ({data,type}) => {
+  const [chenal,setChenal]=useState({});
+  useEffect(()=>{
+    const getChenal=async()=>{
+       try{
+        const res=await axios.get(`http://localhost:8000/api/user/find/${data.userId}`);
+        console.log(res.data);
+        setChenal(res.data);
+       }catch(err){
+        console.log(err);
+       }
+     }
+     getChenal();
+  },[data.userId])
   return (
    <>
-   <Link to="/video/123" style={{textDecoration:"none"}}>
+   <Link to={`/video/${data._id}`} style={{textDecoration:"none"}}>
    <Container type={type}>
-      <Image src='https://fiverr-res.cloudinary.com/images/t_main1,q_auto,f_auto,q_auto,f_auto/gigs/232616182/original/0f65e9367af2fa2433533f5e6fa5a301f98fce41/design-eye-catchy-clickbait-youtube-thumbnails-in-2-hours.jpg' type={type}/>
+      <Image src={data.imgUrl} type={type}/>
       <Details type={type}>
-        <ChenalImg src="https://www.thewikifeed.com/wp-content/uploads/2021/06/neha-sharma-1.jpg" type={type}/>
+        <ChenalImg src={chenal.img} type={type}/>
         <Textwrapper>
-        <VideoTitle type={type}>How to Make Money Online | Ghar baithe paise kamaye</VideoTitle>
+        <VideoTitle type={type}>{data.title}</VideoTitle>
         <Info>
-       <ChennalName type={type}>Neha sharma</ChennalName>
-       <Otherinfo type={type}>600k views. 12 hours ago</Otherinfo>
+       <ChennalName type={type}>{chenal.name}</ChennalName>
+       <Otherinfo type={type}>{data.views} views. {format(data.createdAt)}</Otherinfo>
        </Info>
         </Textwrapper>
       </Details>

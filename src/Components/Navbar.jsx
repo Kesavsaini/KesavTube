@@ -1,6 +1,8 @@
-import { AccountBox, AccountBoxRounded, AccountCircle, AccountCircleOutlined, DensityMedium, Search } from '@mui/icons-material';
+import {VideoCallOutlined, AccountCircleOutlined, DensityMedium, Search } from '@mui/icons-material';
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 const Container=styled.div`
 display: flex;
 justify-content: space-between;
@@ -74,7 +76,20 @@ border:2px #107bd8 solid;
 padding: 0px 10px;
 cursor: pointer;
 `;
+const Avtar=styled.img`
+width: 32px; 
+height: 32px;
+border-radius: 50%;
+background-color: grey;
+`
+const Acount=styled.div`
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: ${({theme})=>theme.text};
+`
 const Navbar = () => {
+  const user=useSelector(state=>state.user.currUser);
   return (
     <>
      <Container>
@@ -96,10 +111,17 @@ const Navbar = () => {
          </Searchbox>
         </Center>
         <Right>
-          <SignIn>
+        <Link to="/signin" style={{textDecoration:"none"}}>
+         { user ?
+         <Acount>
+          <VideoCallOutlined style={{fontSize:"35px"}}/>
+          <Avtar src={user.img}/>
+         </Acount>:
+         <SignIn>
             <AccountCircleOutlined/>
             SIGN IN 
-          </SignIn>
+          </SignIn>}
+        </Link>
         </Right>
      </Container>
     </>

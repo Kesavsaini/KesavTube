@@ -7,6 +7,7 @@ import { darkTheme, LightTheme } from './utils/Theme';
 import { useState } from 'react';
 import Video from './Page/Video';
 import AuthPage from './Page/AuthPage';
+
 import {
   BrowserRouter,
   Routes,
@@ -28,23 +29,29 @@ function App() {
   const [isDark,setDark]=useState(true);
   return (
    <>
+  
    <ThemeProvider theme={isDark?darkTheme:LightTheme}>
     <Container>
+    <BrowserRouter>
       <Navbar/>
       <Wrapper>
         <Menubar isDark={isDark} setDark={setDark}/>
         <Pages>
-        <BrowserRouter>
+        
     <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home type="random"/>} />
+        <Route path="/trending" element={<Home type="trends"/>} />
+        <Route path="/subscription" element={<Home type="subs"/>} />
         <Route path="/signin" element={<AuthPage />} />
         <Route path="/video/:id" element={<Video />} />
         Route
     </Routes>
-  </BrowserRouter>
+
   </Pages>
       </Wrapper>
+      </BrowserRouter>
     </Container>
+
     </ThemeProvider>
    </>
   );
