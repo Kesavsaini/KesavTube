@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 const Container=styled.div`
 display: flex;
 justify-content: space-between;
@@ -80,7 +81,7 @@ const Avtar=styled.img`
 width: 32px; 
 height: 32px;
 border-radius: 50%;
-background-color: grey;
+
 `
 const Acount=styled.div`
   display: flex;
@@ -90,6 +91,7 @@ const Acount=styled.div`
 `
 const Navbar = () => {
   const user=useSelector(state=>state.user.currUser);
+  
   return (
     <>
      <Container>
@@ -115,7 +117,7 @@ const Navbar = () => {
          { user ?
          <Acount>
           <VideoCallOutlined style={{fontSize:"35px"}}/>
-          <Avtar src={user.img}/>
+            <Avtar src={user.img}/>
          </Acount>:
          <SignIn>
             <AccountCircleOutlined/>

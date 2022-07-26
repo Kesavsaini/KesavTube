@@ -72,10 +72,12 @@ const Menubar = ({isDark,setDark}) => {
   return (
     <>
     <Container>
+    <Link to="/" style={{textDecoration:"none"}}>
       <IconBox>
         <Home/>
         Home
       </IconBox>
+      </Link>
       <Link to="/trending" style={{textDecoration:"none"}}>
       <IconBox>
         <ExploreOutlined/>

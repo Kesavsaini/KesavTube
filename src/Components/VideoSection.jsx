@@ -1,5 +1,7 @@
 import { AddTaskOutlined, AddTaskSharp, Replay, ReplayCircleFilledOutlined, Reply, SaveAltOutlined, ShareOutlined, ThumbDownAltOutlined, ThumbUpAltOutlined } from '@mui/icons-material';
 import React from 'react'
+import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Comment from './Comment';
 import CommentInput from './CommentInput';
@@ -83,6 +85,7 @@ font-size: 14px;
 `;
 const CommentSection=styled.div``;
 const VideoSection = () => {
+  const video=useSelector(state=>state.video.videodata);
   return (
     <>
     <Container>
@@ -91,10 +94,10 @@ const VideoSection = () => {
     </VideoBox>
     <Details>
         <VideoInfo>
-        <VideoTitle>KARMA - POMFRET FRY (OFFICIAL MUSIC VIDEO) | KALAMKAAR</VideoTitle>
+        <VideoTitle>{video.title}</VideoTitle>
         <VideoStatsWrapper>
         <VideoinfoLeft>
-            <Videostats>576,420 views .1 Jul 2022</Videostats>
+            <Videostats>{video.views} views .{video.createdAt}</Videostats>
         </VideoinfoLeft>
         <VideoinfoRight>
              <VideoButtons>
@@ -127,7 +130,7 @@ const VideoSection = () => {
           <Subscribe>SUBSCRIBE</Subscribe>
         </ChennalInfo>
     </Details>
-    <Description>Lorem ipsum dolor sit amet consectetur, adipisicing elit. At placeat sapiente, fugit saepe voluptas impedit asperiores minus maiores, adipisci omnis laudantium cupiditate iure delectus nesciunt architecto ipsum. Aspernatur, cupiditate aut. Eveniet, optio velit provident labore commodi iste atque soluta ullam impedit beatae voluptates animi, dolor laudantium architecto earum est quam.</Description>
+    <Description>{video.desc}</Description>
      <Hr/>
      <CommentInput/>
      <CommentSection>

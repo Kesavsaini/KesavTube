@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import Signin from '../Components/Signin';
 import Signup from '../Components/Signup';
+import { signInWithPopup } from 'firebase/auth';
+import { auth, provider } from '../firebase';
 const Container=styled.div`
 width:100%;
 height: 100%;
@@ -64,6 +66,7 @@ margin:10px 0px;
 border-radius: 3px;
 `;
 const AuthPage = () => {
+ 
   return (
     <>
      <Container>
@@ -72,6 +75,7 @@ const AuthPage = () => {
          <Title>Sign In</Title>
          <Desc>Continue to KesavTube</Desc>
           <Signin/>
+         
          <Title>Or</Title>
          <Signup/>
         </Wrapper>
