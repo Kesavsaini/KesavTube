@@ -61,7 +61,7 @@ const Card = ({data,type}) => {
   useEffect(()=>{
     const getChenal=async()=>{
        try{
-        const res=await axios.get(`http://localhost:8000/api/user/find/${data.userId}`);
+        const res=await axios.get(`/user/find/${data.userId}`);
         console.log(res.data);
         setChenal(res.data);
        }catch(err){

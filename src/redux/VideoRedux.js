@@ -23,7 +23,26 @@ export const Videoslice = createSlice({
       state.videodata=null;
       state.error=true;
     }
-  },
+    ,
+    like:(state,action)=>{
+     if(!state.videodata.likes.includes(action.payload)){
+      state.videodata.likes.push(action.payload);
+      const idx=state.videodata.dislikes.indexOf(action.payload);
+      if(idx>-1){
+        state.videodata.dislikes.splice(idx,1);
+      }
+     }
+   },
+   dislike:(state,action)=>{
+    if(!state.videodata.dislikes.includes(action.payload)){
+     state.videodata.dislikes.push(action.payload);
+     const idx=state.videodata.likes.indexOf(action.payload);
+     if(idx>-1){
+       state.videodata.likes.splice(idx,1);
+     }
+    }
+  }
+  }   
 })
-export const { fetchStart,fetchSuccess,fetchFail } = Videoslice.actions
+export const { fetchStart,fetchSuccess,fetchFail,like,dislike} = Videoslice.actions
 export default Videoslice.reducer

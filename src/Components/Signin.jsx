@@ -46,7 +46,7 @@ const Signin = () => {
   const handleGoogle=()=>{
     dispatch(loginStart());
     signInWithPopup(auth,provider).then((result)=>
-      axios.post("http://localhost:8000/api/auth/signin/google",{
+      axios.post("/auth/signin/google",{
         name:result.user.displayName,
         email:result.user.email,
         img:result.user.photoURL
@@ -62,7 +62,7 @@ const Signin = () => {
       e.preventDefault();
       dispatch(loginStart())
        try{
-        const res=await axios.post(`http://localhost:8000/api/auth/signin`,{name,password});
+        const res=await axios.post(`/auth/signin`,{name,password});
         dispatch(loginSuccess(res))
        }catch(err){
         dispatch(loginFail())

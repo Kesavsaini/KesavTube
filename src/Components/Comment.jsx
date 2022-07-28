@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 import React from 'react'
+import {format} from "timeago.js"
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
 const Container=styled.div`
 margin: 20px 0px;
 `;
@@ -34,16 +38,28 @@ font-size: 12px;
 color: ${({theme})=>theme.textSoft};
 
 `;
-const Comment = () => {
+const Comment = ({cmnt}) => {
+  const [user,setUser]=useState({})
+  useEffect(()=>{
+    const getUser=async()=>{
+       try{
+           const res=await axios.get(`/user/find/${cmnt.userId}`);
+           setUser(res.data);
+       }catch(err){
+           
+       }
+    }
+    getUser();
+  },[cmnt.userId])
   return (
     <Container>
         <Userinfo>
-        <ChenalImg src='https://yt3.ggpht.com/ytc/AKedOLTbg045fGOFicfS_gni7VvWycFSDMN-rLIalR79pw=s900-c-k-c0x00ffffff-no-rj'/>
+        <ChenalImg src={user.img}/>
         <ChennalInfo>
-        <ChennalName>Rob C 
-          <Date>2 days ago</Date>
+        <ChennalName>{user.name}
+          <Date>{format(cmnt.createdAt)}</Date>
             </ChennalName> 
-            <CommentText>Aaj tak kabhi kyo tu aaya nahi label pe ? Abhi bhi tu betha kyon wahee same level pe ?Tu aana chahta TV pe, main aa Chuka kabka</CommentText>
+            <CommentText>{cmnt.desc}</CommentText>
         </ChennalInfo>
         </Userinfo>
     </Container>

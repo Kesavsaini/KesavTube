@@ -19,7 +19,7 @@ const Video = () => {
      
       dispatch(fetchStart());
        try{
-        const res=await axios.get(`http://localhost:8000/api/video/find/${videoid}`);
+        const res=await axios.get(`/video/find/${videoid}`);
         dispatch(fetchSuccess(res.data));
        }catch(err){
         dispatch(fetchFail());
@@ -30,7 +30,6 @@ const Video = () => {
   return (
     <>
     <Container>
-      Heelo
      <VideoSection/>
      {/* <Recomandation/> */}
     </Container>

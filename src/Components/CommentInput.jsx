@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React, { useRef, useState } from 'react'
+import { useSelector } from 'react-redux';
 import styled from 'styled-components'
 const Container=styled.div``;
 const ChenalImg=styled.img`
@@ -42,7 +44,8 @@ cursor: pointer;
 border: none;
 padding: 10px 15px;
 `;
-const CommentInput = () => {
+const CommentInput = ({videoid}) => {
+  const user=useSelector(state=>state.user.currUser)
   const inputRef=useRef();
   const [focus,setFocus]=useState(false); 
   const [text,setText]=useState("");
@@ -52,15 +55,19 @@ const CommentInput = () => {
     inputRef.current.value="";
     inputRef.blur();
   }
+  const handlecmnt=async()=>{
+    await axios.post(`/comment/${videoid}`,{desc:text});
+    handleCancle();
+  }
   return (
     <Container>
         <Wrapper>
-          <ChenalImg src='https://yt3.ggpht.com/ytc/AKedOLTbg045fGOFicfS_gni7VvWycFSDMN-rLIalR79pw=s900-c-k-c0x00ffffff-no-rj'/>
+          <ChenalImg src={user.img}/>
           <Commentbar placeholder='Add a Comment...' ref={inputRef} onFocus={()=>setFocus(true)} focus={focus} onChange={(e)=>setText(e.target.value)}/>
         </Wrapper>
         <Buttons focus={focus}>
          <Cancel onClick={handleCancle}>CANCEL</Cancel>
-         <Comment text={text.length>0} disabled={text.length<1}>COMMENT</Comment>
+         <Comment text={text.length>0} disabled={text.length<1} onClick={handlecmnt}>COMMENT</Comment>
         </Buttons>
     </Container>
   )

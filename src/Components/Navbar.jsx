@@ -4,6 +4,9 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useState } from 'react';
+import Upload from './Upload';
+
 const Container=styled.div`
 display: flex;
 justify-content: space-between;
@@ -91,7 +94,7 @@ const Acount=styled.div`
 `
 const Navbar = () => {
   const user=useSelector(state=>state.user.currUser);
-  
+  const [open,setOpen]=useState(false)
   return (
     <>
      <Container>
@@ -113,19 +116,25 @@ const Navbar = () => {
          </Searchbox>
         </Center>
         <Right>
-        <Link to="/signin" style={{textDecoration:"none"}}>
+        
          { user ?
          <Acount>
-          <VideoCallOutlined style={{fontSize:"35px"}}/>
+          <VideoCallOutlined style={{fontSize:"35px",cursor:"pointer"}} onClick={()=>setOpen(true)}/>
+          <Link to="/signin" style={{textDecoration:"none"}}>
             <Avtar src={user.img}/>
+          </Link>
          </Acount>:
+         <Link to="/signin" style={{textDecoration:"none"}}>
          <SignIn>
             <AccountCircleOutlined/>
             SIGN IN 
-          </SignIn>}
-        </Link>
+          </SignIn>
+          </Link>
+          }
+
         </Right>
      </Container>
+     {open && <Upload setOpen={setOpen}/> }
     </>
   )
 }

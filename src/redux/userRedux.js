@@ -27,8 +27,18 @@ export const userSlice = createSlice({
         state.loading=false;
         state.currUser=null;
         state.error=false;
+     },
+     subscription:(state,action)=>{
+       if(!state.currUser.subscribedUsers.includes(action.payload)){
+         state.currUser.subscribedUsers.push(action.payload);
+       }else{
+        const idx=state.currUser.subscribedUsers.indexOf(action.payload);
+        if(idx>-1){
+         state.currUser.subscribedUsers.splice(idx,1);
+        }
+       }
      }
   },
 })
-export const { loginStart,loginSuccess,loginFail,logout } = userSlice.actions
+export const { loginStart,loginSuccess,loginFail,logout,subscription} = userSlice.actions
 export default userSlice.reducer
