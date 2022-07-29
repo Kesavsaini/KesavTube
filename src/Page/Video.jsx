@@ -1,6 +1,7 @@
+import { VideoSettingsSharp } from '@mui/icons-material';
 import axios from 'axios';
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Recomandation from '../Components/Recomandation';
@@ -27,11 +28,12 @@ const Video = () => {
      }
      getVideo();
   },[videoid])
+  const videotags=useSelector(state=>state.video.videodata.tags);
   return (
     <>
     <Container>
      <VideoSection/>
-     {/* <Recomandation/> */}
+     <Recomandation tags={videotags}/>
     </Container>
     </>
   )

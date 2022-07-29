@@ -13,6 +13,7 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import Search from './Page/Search';
 const Container=styled.div`
 
 `;
@@ -44,6 +45,7 @@ function App() {
         <Route path="/subscription" element={<Home type="subs"/>} />
         <Route path="/signin" element={<AuthPage />} />
         <Route path="/video/:id" element={<Video />} />
+        <Route path="/search" element={<Search/>} />
         Route
     </Routes>
 

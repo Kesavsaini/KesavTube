@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import Upload from './Upload';
+import { useNavigate } from 'react-router-dom';
 
 const Container=styled.div`
 display: flex;
@@ -16,6 +17,7 @@ padding: 10px;
 height: 40px;
 position: sticky;
 top: 0;
+z-index: 99;
 `;
 const Left=styled.div`
 flex: 1;
@@ -93,8 +95,10 @@ const Acount=styled.div`
   color: ${({theme})=>theme.text};
 `
 const Navbar = () => {
+  const navigate=useNavigate();
   const user=useSelector(state=>state.user.currUser);
   const [open,setOpen]=useState(false)
+  const [q,setQ]=useState("");
   return (
     <>
      <Container>
@@ -109,8 +113,8 @@ const Navbar = () => {
         </Left>
         <Center>
          <Searchbox>
-          <SearchInput placeholder='Search'/>
-          <SerachIconbox>
+          <SearchInput placeholder='Search' onChange={(e)=>setQ(e.target.value)}/>
+          <SerachIconbox onClick={()=>navigate(`/search?q=${q}`)}>
           <Search/>
           </SerachIconbox>
          </Searchbox>

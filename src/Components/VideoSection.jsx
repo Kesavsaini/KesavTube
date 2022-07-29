@@ -141,7 +141,7 @@ const VideoSection = () => {
     <>
     <Container>
     <VideoBox>
-    <Videoframe src={video.videoUrl}></Videoframe>
+    <Videoframe src={video.videoUrl} controls></Videoframe>
     </VideoBox>
     <Details>
         <VideoInfo>
